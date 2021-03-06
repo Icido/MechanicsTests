@@ -35,6 +35,11 @@ public:
 	void StartGrowing();
 	void StopGrowing();
 
+	void DanceMoveOne();
+	void DanceMoveTwo();
+	void DanceMoveThree();
+	void DanceMoveFour();
+
 	// Input variables
 	FVector CurrrentVelocity;
 	bool bGrowing;

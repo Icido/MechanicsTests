@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+
 #include "YIS_DefaultPlayerController.generated.h"
 
 /**
@@ -19,7 +20,8 @@ public:
 	AYIS_DefaultPlayerController() {}
 
 private:
-	// Called when the game starts or when spawned
-	void testFunction();
+
+	virtual void SetupInputComponent() override;
+	void PauseMenu();
 	
 };
