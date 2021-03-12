@@ -4,6 +4,8 @@
 #include "YIS_DefaultPlayerController.h"
 
 #include "YIS_DefaultHUD.h"
+#include "Blueprint/UserWidget.h"
+#include <Kismet/GameplayStatics.h>
 
 // Called to bind functionality to input
 void AYIS_DefaultPlayerController::SetupInputComponent()
@@ -24,7 +26,17 @@ void AYIS_DefaultPlayerController::SetupInputComponent()
 
 void AYIS_DefaultPlayerController::PauseMenu()
 {
-	AYIS_DefaultHUD* HUD = this->GetHUD<AYIS_DefaultHUD>();
+	APlayerController* PC = UGameplayStatics::GetPlayerController( GetWorld(), 0);
+	AYIS_DefaultHUD* HUD = PC->GetHUD<AYIS_DefaultHUD>();
 	
-	HUD->ShowHideMainMenu();
+	if( HUD->IsMainMenuActive() )
+    {
+		HUD->HideMainMenu();
+    }
+    else
+    {
+    	HUD->ShowMainMenu();
+    }
+    
 }
+

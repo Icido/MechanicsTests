@@ -15,13 +15,9 @@ class MECHANICSTESTS_API AYIS_DefaultPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this playercontroller's properties
-	AYIS_DefaultPlayerController() {}
-
 private:
-
 	virtual void SetupInputComponent() override;
+	UFUNCTION()
 	void PauseMenu();
 	
 };
