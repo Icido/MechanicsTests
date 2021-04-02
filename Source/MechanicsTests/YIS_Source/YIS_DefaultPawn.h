@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "YIS_ButtonManager.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "YIS_DefaultPawn.generated.h"
@@ -29,19 +31,18 @@ public:
 	UPROPERTY(EditAnywhere)
 	USceneComponent* OurVisibleComponent;
 
-	// Input functions
-	void Move_XAxis(float AxisValue);
-	void Move_YAxis(float AxisValue);
-	void StartGrowing();
-	void StopGrowing();
+	UPROPERTY(EditAnywhere)
+	AYIS_ButtonManager* BManager;
 
 	void DanceMoveOne();
 	void DanceMoveTwo();
 	void DanceMoveThree();
 	void DanceMoveFour();
 
-	// Input variables
-	FVector CurrrentVelocity;
-	bool bGrowing;
+	void DebugStartOne();
+	void DebugStartTwo();
+	void DebugStartThree();
+	void DebugStartFour();
+
 	
 };

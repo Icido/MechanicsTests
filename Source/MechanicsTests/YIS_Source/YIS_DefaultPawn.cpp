@@ -39,23 +39,57 @@ void AYIS_DefaultPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		InputComponent->BindAction("DanceMoveTwo", IE_Pressed, this, &AYIS_DefaultPawn::DanceMoveTwo);
 		InputComponent->BindAction("DanceMoveThree", IE_Pressed, this, &AYIS_DefaultPawn::DanceMoveThree);
 		InputComponent->BindAction("DanceMoveFour", IE_Pressed, this, &AYIS_DefaultPawn::DanceMoveFour);
+		
+		InputComponent->BindAction("DebugStartOne", IE_Pressed, this, &AYIS_DefaultPawn::DebugStartOne);
+		InputComponent->BindAction("DebugStartTwo", IE_Pressed, this, &AYIS_DefaultPawn::DebugStartTwo);
+		InputComponent->BindAction("DebugStartThree", IE_Pressed, this, &AYIS_DefaultPawn::DebugStartThree);
+		InputComponent->BindAction("DebugStartFour", IE_Pressed, this, &AYIS_DefaultPawn::DebugStartFour);
 	}
+
+	FVector Location(0.0f, 0.0f, 0.0f);
+	FRotator Rotation(0.0f, 0.0f, 0.0f);
+	FActorSpawnParameters SpawnInfo;
+	BManager = GetWorld()->SpawnActor<AYIS_ButtonManager>(Location, Rotation, SpawnInfo);
 }
 
 void AYIS_DefaultPawn::DanceMoveOne()
 {
+	BManager->CheckButtonHit(ButtonType::ButtonAX);
 }
 
 void AYIS_DefaultPawn::DanceMoveTwo()
 {
+	BManager->CheckButtonHit(ButtonType::ButtonWY);
 }
 
 void AYIS_DefaultPawn::DanceMoveThree()
 {
+	BManager->CheckButtonHit(ButtonType::ButtonSA);
 }
 
 void AYIS_DefaultPawn::DanceMoveFour()
 {
+	BManager->CheckButtonHit(ButtonType::ButtonDB);
+}
+
+void AYIS_DefaultPawn::DebugStartOne()
+{
+	BManager->CreateNewButton(ButtonType::ButtonAX);
+}
+
+void AYIS_DefaultPawn::DebugStartTwo()
+{
+	BManager->CreateNewButton(ButtonType::ButtonWY);
+}
+
+void AYIS_DefaultPawn::DebugStartThree()
+{
+	BManager->CreateNewButton(ButtonType::ButtonSA);
+}
+
+void AYIS_DefaultPawn::DebugStartFour()
+{
+	BManager->CreateNewButton(ButtonType::ButtonDB);
 }
 
 
